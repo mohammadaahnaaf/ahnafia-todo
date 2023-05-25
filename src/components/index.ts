@@ -1,3 +1,5 @@
 export * from './shared/index'
 export * from './Home'
 export * from './Profile'
+export * from './Card'
+export * from './layout/index'

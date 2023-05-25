@@ -1,12 +1,12 @@
-import Image from 'next/image'
+import { Home } from '@ahnafia/components'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className='bg-white h-screen text-red-600'>
-      Ahnafia Todo
+    <div className='w-full bg-white'>
+      <Home />
     </div>
   )
 }
