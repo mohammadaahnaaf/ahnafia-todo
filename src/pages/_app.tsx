@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import '../styles/globals.css'
 import { Footer, Header } from '@ahnafia/components'
 import type { AppProps } from 'next/app'
 

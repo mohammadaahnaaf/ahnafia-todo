@@ -3,27 +3,11 @@ import React from 'react'
 
 type Props = {}
 
-export const Card = (props: Props) => {
-    const [todos, setTodos] = React.useState([
-        {
-            _id: 1,
-            text: 'I donno what to do...',
-            status: true
-        },
-        {
-            _id: 2,
-            text: 'I donno what to do...',
-            status: true
-        },
-        {
-            _id: 3,
-            text: 'I donno what to do...',
-            status: true
-        },
-    ])
+export const Card = (toDo: any[], text: any, status: any) => {
+  
     return (
-        <div className="w-full mx-auto grid max-w-xl p-4 bg-yellow-200 border border-gray-200 rounded-sm shadow sm:p-8">
-            <div className="flex items-center justify-between mb-4">
+        <div className="w-full min-h-28 mx-auto grid max-w-xl p-2 bg-yellow-200 border border-gray-200 rounded-sm shadow sm:p-8">
+            <div className="flex items-center justify-between py-4">
                 <h5 className="text-xl font-bold leading-none text-gray-900">Todays Todo</h5>
                 <Link href="#" className="text-sm font-medium text-blue-600 hover:underline">
                     View All
@@ -31,7 +15,7 @@ export const Card = (props: Props) => {
             </div>
             <div className="flow-root">
                 <ul role="list" className="divide-y divide-yellow-400">
-                    {todos?.map((x, index) => (
+                    {toDo?.map((x: { text: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined }, index: React.Key | null | undefined) => (
 
                         <li key={index} className="py-3 sm:py-4">
                             <div className="flex items-center space-x-4">
@@ -41,7 +25,7 @@ export const Card = (props: Props) => {
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                         </svg>
                                     </button>
-                                    {/* <h2 className='text-md'>{index + 1}. </h2> */}
+                                  
                               
                                 <div className="flex-1 min-w-0">
                                     <p className="text-md font-medium text-gray-900 truncate">
