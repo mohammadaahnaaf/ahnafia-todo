@@ -7,16 +7,16 @@ const baseUrl = "https://ahnafia-todo-backend.onrender.com"
 const getAllToDo = (setToDo: (arg0: any) => void) => {
     axios
         .get(baseUrl)
-        .then(({ data}) => {
+        .then(({ data }) => {
             console.log('data: ', data);
             setToDo(data)
         })
 }
 
-const addToDo = (text: any, setText: (arg0: string) => void, setToDo: any) => {
+const addToDo = (text: any, status: boolean, setText: (arg0: string) => void, setToDo: any) => {
 
     axios
-        .post(`${baseUrl}/save`, { text })
+        .post(`${baseUrl}/save`, { text: text, status: status })
         .then((data) => {
             console.log(data);
             setText("")
@@ -26,10 +26,10 @@ const addToDo = (text: any, setText: (arg0: string) => void, setToDo: any) => {
 
 }
 
-const updateToDo = (toDoId: any, text: any, setToDo: any, setText: (arg0: string) => void, setIsUpdating: (arg0: boolean) => void) => {
+const updateToDo = (toDoId: any, text: any, status: boolean, setToDo: any, setText: (arg0: string) => void, setIsUpdating: (arg0: boolean) => void) => {
 
     axios
-        .post(`${baseUrl}/update`, { _id: toDoId, text })
+        .post(`${baseUrl}/update`, { _id: toDoId, text: text, status: status })
         .then((data) => {
             setText("")
             setIsUpdating(false)
