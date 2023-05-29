@@ -43,7 +43,7 @@ export const Home = (props: Props) => {
   return (
     <div className='h-screen py-4 w-full'>
       <div className='max-w-xl mx-auto w-full grid p-4 rounded-sm my-4 bg-yellow-200'>
-        <label className='text-black text-center mb-2 font-semibold' htmlFor='text'>Add Todo</label>
+        <label className='text-black text-center mb-2 font-semibold' htmlFor='text'>{isUpdating ? 'Update ' : 'Add '} Todo</label>
         <input id='text' value={text || ''} className='ring-2 hover:ring-black text-black px-2 w-full rounded-sm ring-red-600 py-2' type='text' onChange={(e) => setText(e.target.value)} />
         <button type='submit' className='w-28 mx-auto mt-2 px-2 py-1 bg-red-600 rounded-sm hover:bg-black'
           onClick={isUpdating ?
