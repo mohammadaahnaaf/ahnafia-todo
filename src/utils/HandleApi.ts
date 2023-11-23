@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-// const baseUrl = "http://localhost:5000"
-const baseUrl = "https://ahnafia-todo-backend.onrender.com"
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
 
 
 const getAllToDo = (setToDo: (arg0: any) => void) => {
@@ -36,7 +35,6 @@ const updateToDo = (toDoId: any, text: any, status: boolean, setToDo: any, setTe
             getAllToDo(setToDo)
         })
         .catch((err: any) => console.log(err))
-
 }
 
 const deleteToDo = (_id: any, setToDo: any) => {

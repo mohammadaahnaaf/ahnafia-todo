@@ -4,22 +4,23 @@ import { addToDo, deleteToDo, getAllToDo, updateToDo } from '@ahnafia/utils'
 import Link from 'next/link'
 
 type Props = {}
+type ToDo = {
+  _id: string
+  text: string
+  status: boolean
+}
 
 export const Home = (props: Props) => {
 
-  const [toDo, setToDo] = useState([{
-    _id: '',
-    text: '',
-    status: false
-  }])
-  const [text, setText] = useState("")
+  const [toDo, setToDo] = useState<ToDo[]>([])
+  const [text, setText] = useState<string>("")
   const [status, setStatus] = useState(false)
-  const [isUpdating, setIsUpdating] = useState(false)
-  const [toDoId, setToDoId] = useState("")
+  const [isUpdating, setIsUpdating] = useState<boolean>(false)
+  const [toDoId, setToDoId] = useState<string>("")
 
   useEffect(() => {
     getAllToDo(setToDo)
-  }, [])
+  }, [isUpdating])
 
   const updateMode = (_id: string, text: string, stat: boolean) => {
     setIsUpdating(true)
@@ -112,6 +113,13 @@ export const Home = (props: Props) => {
                 </li>
               ) : null
             })}
+            {toDo?.length === 0 && (
+              <div>
+                <h1 className='text-red-600 text-center py-4 text-lg font-semibold'>
+                  Loading...
+                </h1>
+              </div>
+            )}
           </ul>
         </div>
       </div>
