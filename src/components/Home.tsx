@@ -4,6 +4,7 @@ import { addToDo, deleteToDo, getAllToDo, updateToDo } from '@ahnafia/utils'
 import Link from 'next/link'
 
 type Props = {}
+
 type ToDo = {
   _id: string
   text: string
@@ -12,7 +13,7 @@ type ToDo = {
 
 export const Home = (props: Props) => {
 
-  const [toDo, setToDo] = useState<ToDo[]>([{
+  const [toDo, setToDo] = useState([{
     _id: '',
     text: '',
     status: false
