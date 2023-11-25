@@ -3,8 +3,8 @@ import axios from 'axios'
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
 
 
-const getAllToDo = (setToDo: (arg0: any) => void) => {
-    axios
+const getAllToDo = async (setToDo: (arg0: any) => void) => {
+   await axios
         .get(baseUrl)
         .then(({ data }) => {
             console.log('data: ', data);
@@ -12,9 +12,9 @@ const getAllToDo = (setToDo: (arg0: any) => void) => {
         })
 }
 
-const addToDo = (text: any, status: boolean, setText: (arg0: string) => void, setToDo: any) => {
+const addToDo = async (text: any, status: boolean, setText: (arg0: string) => void, setToDo: any) => {
 
-    axios
+    await axios
         .post(`${baseUrl}/save`, { text: text, status: status })
         .then((data) => {
             console.log(data);

@@ -12,7 +12,11 @@ type ToDo = {
 
 export const Home = (props: Props) => {
 
-  const [toDo, setToDo] = useState<ToDo[]>([])
+  const [toDo, setToDo] = useState<ToDo[]>([{
+    _id: '',
+    text: '',
+    status: false
+  }])
   const [text, setText] = useState<string>("")
   const [status, setStatus] = useState(false)
   const [isUpdating, setIsUpdating] = useState<boolean>(false)
@@ -20,7 +24,7 @@ export const Home = (props: Props) => {
 
   useEffect(() => {
     getAllToDo(setToDo)
-  }, [isUpdating])
+  }, [])
 
   const updateMode = (_id: string, text: string, stat: boolean) => {
     setIsUpdating(true)
@@ -39,6 +43,7 @@ export const Home = (props: Props) => {
     setStatus(!s)
     updateMode(id, t, !s)
     setToDo(newInputFields);
+    updateToDo(id, t, !s, setToDo, setText, setIsUpdating)
   }
 
   return (
@@ -69,23 +74,9 @@ export const Home = (props: Props) => {
                 <li key={index} className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
 
-                    {/* <button
-                      type='button'
-                      onClick={() => nowStatus = !nowStatus}
-                      className='bg-white hover:bg-green-600 hover:text-white rounded-md text-green-600 p-0.5'>
-                      {nowStatus ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-600" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
-                      ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="h-5 w-5" >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                      )}
-                    </button> */}
                     <div className="flex items-center">
-                      <input name='status' checked={x.status || false} onClick={(event) => handleStatus(event, x._id, x.status, x.text)} id="status" type="checkbox" value="" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 p-1 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                      <label htmlFor="status" className="ml-2 hidden text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
+                      <input name='status' checked={x.status || false} onClick={(event) => handleStatus(event, x._id, x.status, x.text)} id="status" type="checkbox" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 p-1 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                      <label htmlFor="status" className="ml-2 hidden text-sm font-medium ">Checked state</label>
                     </div>
 
                     <div className="flex-1 min-w-0">
@@ -111,15 +102,14 @@ export const Home = (props: Props) => {
                     </div>
                   </div>
                 </li>
-              ) : null
+              ) : (
+                <div>
+                  <h1 className='text-red-600 text-center py-4 text-lg font-semibold'>
+                    Loading...
+                  </h1>
+                </div>
+              )
             })}
-            {toDo?.length === 0 && (
-              <div>
-                <h1 className='text-red-600 text-center py-4 text-lg font-semibold'>
-                  Loading...
-                </h1>
-              </div>
-            )}
           </ul>
         </div>
       </div>
