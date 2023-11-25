@@ -9,10 +9,12 @@ export const Header = (props: Props) => {
 
     <nav className="bg-white border-gray-200 dark:bg-yellow-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-4">
-        <Link href="/" className="flex items-center">
-          <Image height={70} width={70} src="/logo.png" className="h-10 mr-3" alt="ahnafia Logo" />
-          <span className="self-center text-xl font-normal whitespace-nowrap">Ahnafia Todo</span>
-        </Link>
+        <div className='relative grid w-20 h-16'>
+          <Image priority fill src="/logo.png" className="mb-4 h-16 z-0" alt="ahnafia-Logo" />
+          <Link href="/" className="absolute z-10 w-full h-full text-transparent self-center text-xl font-normal whitespace-nowrap">
+            Todo
+          </Link>
+        </div>
         <div className="flex items-center md:order-2">
           <button type="button" className="flex mr-3 text-sm bg-yellow-200 rounded-full md:mr-0 focus:ring-4 p-1 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span className="sr-only">Open user menu</span>
@@ -20,7 +22,6 @@ export const Header = (props: Props) => {
               <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" />
             </svg>
 
-            {/* <Image height={50} width={50} className="w-8 h-8 rounded-full" src="/user.jpg" alt="user photo" /> */}
           </button>
 
           {/* Dropdown menu */}
@@ -46,7 +47,7 @@ export const Header = (props: Props) => {
           </div> */}
           <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
             <span className="sr-only">Open main menu</span>
-            <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
           </button>
         </div>
 

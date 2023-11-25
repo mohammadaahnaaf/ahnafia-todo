@@ -1,5 +1,7 @@
 {
   "name": "ahnafia-todo",
+  "author": "ahnaf",
+  "date": "may-24-2023",
   "version": "0.1.0",
   "private": true,
   "scripts": {
