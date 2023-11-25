@@ -6,15 +6,15 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
 const getAllToDo = async (setToDo: (arg0: any) => void) => {
    await axios
         .get(baseUrl)
-        .then(({ data }) => {
+        .then((data) => {
             console.log('data: ', data);
             setToDo(data)
         })
 }
 
-const addToDo = async (text: any, status: boolean, setText: (arg0: string) => void, setToDo: any) => {
+const addToDo = (text: any, status: boolean, setText: (arg0: string) => void, setToDo: any) => {
 
-    await axios
+    axios
         .post(`${baseUrl}/save`, { text: text, status: status })
         .then((data) => {
             console.log(data);

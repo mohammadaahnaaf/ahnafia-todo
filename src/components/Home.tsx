@@ -69,9 +69,9 @@ export const Home = (props: Props) => {
         </div>
         <div className="flow-root">
           <ul role="list" className="divide-y divide-yellow-400">
-            {toDo?.map((x: { _id: string, text: string, status: boolean }, index: React.Key) => {
+            {toDo?.map((x: { _id: string, text: string, status: boolean }, index: number) => {
 
-              return x._id ? (
+              return x?._id ? (
                 <li key={index} className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
 
