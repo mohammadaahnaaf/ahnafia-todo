@@ -37,6 +37,7 @@ export const Home = (props: Props) => {
     setStatus(!s)
     updateMode(id, t, !s)
     setToDo(newInputFields);
+    updateToDo(id, t, !s, setToDo, setText, setIsUpdating)
   }
 
   return show ? (
@@ -61,21 +62,27 @@ export const Home = (props: Props) => {
         </div>
         <div className="flow-root">
           <ul role="list" className="divide-y divide-yellow-400">
-            {toDo?.map((x: { _id: string, text: string, status: boolean }, index: React.Key) => {
+            {toDo?.map((x: { _id: string, text: string, status: boolean }, index: number) => {
 
               return x._id ? (
                 <li key={index} className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
 
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                       <input name='status' checked={x.status || false} onChange={(event) => handleStatus(event, x._id, x.status, x.text)} id="status" type="checkbox" value="" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 p-1 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                       <label htmlFor="status" className="ml-2 hidden text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
-                    </div>
+                    </div> */}
+                    {/* <div>
+                      <p className='text-gray-900 font-semibold'>{index + 1}.</p>
+                    </div> */}
 
                     <div className="flex-1 min-w-0">
-                      <p className="text-md font-medium text-gray-900 truncate">
-                        {x.text}
-                      </p>
+                      <button className='text-md font-medium text-gray-900 hover:text-blue-600 truncate' onClick={(event) => handleStatus(event, x._id, x.status, x.text)} type='button'>
+                        {index + 1}.
+                        <span className={x.status ? 'line-through ml-4 text-red-600 hover:text-blue-600' : 'ml-4'}>
+                          {x.text}
+                        </span>
+                      </button>
                     </div>
                     <div className="inline-flex gap-2 items-center text-base font-semibold text-gray-900">
                       <button
